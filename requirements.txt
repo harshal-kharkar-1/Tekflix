@@ -1,0 +1,25 @@
+# Django and Web Server
+Django
+gunicorn
+
+# PostgreSQL database support
+psycopg2-binary
+
+
+# LangChain ecosystem
+langchain-openai
+langchain_community 
+langchain-pymupdf4llm
+langchain  
+langgraph
+langsmith
+
+
+# Optional extras (you may want these)
+python-dotenv         # For environment variable loading
+dj-database-url       # Parse DB URLs into Django DB config
+
+# The following packages are for Django REST framework and related utilities
+djangorestframework
+markdown       
+django-filter
