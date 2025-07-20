@@ -1,7 +1,27 @@
-from django.urls import path
+# from django.urls import path
 
+# from . import views
+
+# urlpatterns = [
+#     path("", views.index, name="index"),
+# ]
+
+# from django.urls import path
+# from . import views
+
+# urlpatterns = [
+#     path("ask/", views.ask_question, name="ask_question"),
+#     # You can add more routes here
+# ]
+
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path('', views.project_list, name='project_list'),
+    path('create/', views.create_project, name='create_project'),
+    path('project/<int:project_id>/', views.project_detail, name='project_detail'),
+    path('api/process/<int:project_id>/', views.process_project, name='process_project'),
+    path('api/status/<int:project_id>/', views.project_status, name='project_status'),
+    path('export/<int:project_id>/', views.export_project, name='export_project'),
 ]

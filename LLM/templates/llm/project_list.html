@@ -1,0 +1,141 @@
+<!-- LLM/templates/LLM/project_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Tekflix</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .search-form input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 6px 0 0 6px;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            font-size: 1rem;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+        }
+
+        .create-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 30px auto;
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .create-btn:hover {
+            background-color: #218838;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .pagination span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Tekflix</h1>
+
+        <form method="get" class="search-form">
+            <input type="text" name="search" placeholder="Search projects..." value="{{ search_query }}">
+            <button type="submit">Search</button>
+        </form>
+
+        <a href="{% url 'create_project' %}" class="create-btn">+ Create New Project</a>
+
+        {% if page_obj and page_obj.object_list %}
+            <ul>
+                {% for project in page_obj %}
+                    <li>
+                        <a href="{% url 'project_detail' project.id %}">
+                            {{ project.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">« Previous</a>
+                {% endif %}
+
+                <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next »</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
