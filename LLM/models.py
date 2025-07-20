@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 from django.db import models
 import json
+class Project(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+
 
 class ContentProject(models.Model):
     """Main project containing all topics and metadata"""
