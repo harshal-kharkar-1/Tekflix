@@ -222,3 +222,119 @@ INFO 2025-07-20 10:34:10,734 basehttp 19540 8148 "GET / HTTP/1.1" 200 3649
 INFO 2025-07-20 10:34:13,008 basehttp 19540 8148 "GET /create/ HTTP/1.1" 200 3858
 INFO 2025-07-20 10:36:04,181 basehttp 19540 8148 "POST /create/ HTTP/1.1" 302 0
 INFO 2025-07-20 10:36:07,665 basehttp 19540 8148 "GET /project/5/ HTTP/1.1" 200 6637793
+INFO 2025-07-20 11:17:27,135 autoreload 14388 2444 Watching for file changes with StatReloader
+INFO 2025-07-20 11:17:36,951 basehttp 14388 19092 "GET / HTTP/1.1" 200 3828
+ERROR 2025-07-20 11:17:45,209 log 14388 9048 Internal Server Error: /project/5/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+ERROR 2025-07-20 11:17:45,219 basehttp 14388 9048 "GET /project/5/ HTTP/1.1" 500 67656
+INFO 2025-07-20 11:23:48,218 autoreload 14388 2444 C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-20 11:23:49,190 autoreload 12024 15672 Watching for file changes with StatReloader
+INFO 2025-07-20 11:24:23,740 autoreload 12024 15672 C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-20 11:24:24,671 autoreload 4036 12256 Watching for file changes with StatReloader
+INFO 2025-07-20 11:27:38,636 autoreload 4036 12256 C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-20 11:27:39,736 autoreload 13820 15520 Watching for file changes with StatReloader
+INFO 2025-07-20 11:28:40,758 autoreload 13820 15520 C:\Users\dell\Djangoprojects\Tekflix\LLM\models.py changed, reloading.
+INFO 2025-07-20 11:28:42,154 autoreload 11896 5888 Watching for file changes with StatReloader
+INFO 2025-07-20 11:28:47,254 basehttp 11896 14456 "GET / HTTP/1.1" 200 3828
+ERROR 2025-07-20 11:28:51,138 log 11896 14456 Internal Server Error: /project/5/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+ERROR 2025-07-20 11:28:51,140 basehttp 11896 14456 "GET /project/5/ HTTP/1.1" 500 67656
+INFO 2025-07-20 11:38:12,257 autoreload 11896 5888 C:\Users\dell\Djangoprojects\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-20 11:38:13,608 autoreload 17692 13000 Watching for file changes with StatReloader
+INFO 2025-07-20 11:38:24,672 autoreload 17692 13000 C:\Users\dell\Djangoprojects\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-20 11:38:25,460 autoreload 20388 18620 Watching for file changes with StatReloader
+INFO 2025-07-20 11:38:30,427 basehttp 20388 6476 "GET / HTTP/1.1" 200 3828
+ERROR 2025-07-20 11:38:33,491 log 20388 6476 Internal Server Error: /project/5/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: LLM_project
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 68, in project_detail
+    project = get_object_or_404(Project, pk=pk)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: LLM_project
+ERROR 2025-07-20 11:38:33,507 basehttp 20388 6476 "GET /project/5/ HTTP/1.1" 500 139829
+INFO 2025-07-20 11:50:28,520 autoreload 13820 8456 Watching for file changes with StatReloader
+INFO 2025-07-20 11:50:35,221 basehttp 13820 5736 "GET / HTTP/1.1" 200 3828
+ERROR 2025-07-20 11:50:57,919 log 13820 5736 Internal Server Error: /project/5/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+ERROR 2025-07-20 11:50:57,923 basehttp 13820 5736 "GET /project/5/ HTTP/1.1" 500 67656
+INFO 2025-07-20 12:01:57,928 autoreload 13820 8456 C:\Users\dell\Djangoprojects\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-20 12:01:59,129 autoreload 12384 18656 Watching for file changes with StatReloader
+INFO 2025-07-20 12:03:53,803 autoreload 12384 18656 C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-20 12:03:54,850 autoreload 7008 1948 Watching for file changes with StatReloader
+INFO 2025-07-20 12:04:38,671 autoreload 7008 1948 C:\Users\dell\Djangoprojects\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-20 12:04:39,587 autoreload 19104 17796 Watching for file changes with StatReloader
+INFO 2025-07-20 12:06:10,066 autoreload 15848 18588 Watching for file changes with StatReloader
+INFO 2025-07-20 12:06:15,486 basehttp 19104 20048 "GET / HTTP/1.1" 200 3828
+INFO 2025-07-20 12:06:41,526 basehttp 19104 20048 - Broken pipe from ('127.0.0.1', 56153)
+INFO 2025-07-20 12:06:44,857 basehttp 19104 17172 "GET /create/ HTTP/1.1" 200 3858
+INFO 2025-07-20 12:06:54,870 basehttp 19104 16988 - Broken pipe from ('127.0.0.1', 56154)
+INFO 2025-07-20 12:06:56,387 basehttp 19104 9952 - Broken pipe from ('127.0.0.1', 56159)
+INFO 2025-07-20 12:06:58,034 basehttp 19104 10380 - Broken pipe from ('127.0.0.1', 56160)
+INFO 2025-07-20 12:08:23,027 basehttp 19104 17172 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 12:08:34,714 basehttp 19104 17172 "GET /project/6/ HTTP/1.1" 200 1371850
+INFO 2025-07-20 15:33:58,346 autoreload 15948 9408 Watching for file changes with StatReloader
+INFO 2025-07-20 15:34:03,651 basehttp 19104 8592 "GET / HTTP/1.1" 200 4007
+INFO 2025-07-20 15:34:43,050 basehttp 19104 8592 - Broken pipe from ('127.0.0.1', 63703)
+INFO 2025-07-20 15:34:49,664 basehttp 19104 9012 "GET /?search=cancer HTTP/1.1" 200 3472
+INFO 2025-07-20 15:34:52,300 basehttp 19104 9012 "GET /?search=cancer HTTP/1.1" 200 3472
+INFO 2025-07-20 15:34:56,312 basehttp 19104 20412 - Broken pipe from ('127.0.0.1', 63704)
+INFO 2025-07-20 15:35:00,804 basehttp 19104 17276 - Broken pipe from ('127.0.0.1', 63709)
+INFO 2025-07-20 15:35:02,022 basehttp 19104 19468 - Broken pipe from ('127.0.0.1', 63712)
+INFO 2025-07-20 15:35:02,711 basehttp 19104 20196 - Broken pipe from ('127.0.0.1', 63713)
+INFO 2025-07-20 15:35:03,187 basehttp 19104 10828 - Broken pipe from ('127.0.0.1', 63714)
+INFO 2025-07-20 15:35:12,966 basehttp 19104 9012 "GET /project/6/ HTTP/1.1" 200 1371850
+INFO 2025-07-20 15:35:45,981 basehttp 19104 9012 "GET /create/ HTTP/1.1" 200 3858
+INFO 2025-07-20 15:37:45,959 basehttp 19104 9012 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 15:37:56,967 basehttp 19104 9012 "GET /project/7/ HTTP/1.1" 200 1371850
