@@ -1,0 +1,224 @@
+INFO 2025-07-19 23:02:16,130 autoreload 1188 6644 Watching for file changes with StatReloader
+INFO 2025-07-19 23:08:36,953 autoreload 10444 8812 Watching for file changes with StatReloader
+INFO 2025-07-19 23:17:00,619 autoreload 11012 16284 Watching for file changes with StatReloader
+INFO 2025-07-19 23:17:30,377 autoreload 7312 1620 Watching for file changes with StatReloader
+INFO 2025-07-19 23:18:42,483 autoreload 2416 4860 Watching for file changes with StatReloader
+INFO 2025-07-19 23:25:54,131 autoreload 2416 4860 C:\Users\dell\Djangoprojects\Tekflix\LLM\agents.py changed, reloading.
+INFO 2025-07-19 23:25:55,104 autoreload 10976 13632 Watching for file changes with StatReloader
+INFO 2025-07-20 00:12:16,731 autoreload 2688 2292 Watching for file changes with StatReloader
+INFO 2025-07-20 00:15:09,954 autoreload 2688 2292 C:\Users\dell\Djangoprojects\Tekflix\LLM\agents.py changed, reloading.
+INFO 2025-07-20 00:15:10,932 autoreload 15188 1540 Watching for file changes with StatReloader
+INFO 2025-07-20 00:15:37,361 autoreload 13624 14952 Watching for file changes with StatReloader
+INFO 2025-07-20 00:19:24,920 autoreload 13624 14952 C:\Users\dell\Djangoprojects\Tekflix\LLM\langgraph_workflow.py changed, reloading.
+INFO 2025-07-20 00:19:26,055 autoreload 6036 16584 Watching for file changes with StatReloader
+INFO 2025-07-20 07:20:16,674 autoreload 10248 12680 Watching for file changes with StatReloader
+INFO 2025-07-20 07:21:32,982 autoreload 10248 12680 C:\Users\dell\Djangoprojects\Tekflix\LLM\langgraph_workflow.py changed, reloading.
+INFO 2025-07-20 07:21:33,669 autoreload 240 19672 Watching for file changes with StatReloader
+INFO 2025-07-20 07:21:42,304 autoreload 240 19672 C:\Users\dell\Djangoprojects\Tekflix\LLM\langgraph_workflow.py changed, reloading.
+INFO 2025-07-20 07:21:43,051 autoreload 10144 17024 Watching for file changes with StatReloader
+INFO 2025-07-20 07:27:21,051 autoreload 14084 1708 Watching for file changes with StatReloader
+ERROR 2025-07-20 07:27:26,989 log 14084 14652 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+sqlite3.OperationalError: no such table: LLM_contentproject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 42, in project_list
+    page_obj = paginator.get_page(page_number)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\paginator.py", line 85, in get_page
+    return self.page(number)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\paginator.py", line 89, in page
+    number = self.validate_number(number)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\paginator.py", line 70, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\paginator.py", line 116, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\paginator.py", line 110, in count
+    return c()
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\query.py", line 604, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\sql\query.py", line 644, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\sql\query.py", line 626, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+django.db.utils.OperationalError: no such table: LLM_contentproject
+ERROR 2025-07-20 07:27:27,118 basehttp 14084 14652 "GET / HTTP/1.1" 500 160712
+WARNING 2025-07-20 07:27:27,583 log 14084 14652 Not Found: /favicon.ico
+WARNING 2025-07-20 07:27:27,592 basehttp 14084 14652 "GET /favicon.ico HTTP/1.1" 404 4050
+INFO 2025-07-20 07:44:46,792 autoreload 11876 9564 Watching for file changes with StatReloader
+ERROR 2025-07-20 07:44:52,589 log 11876 16964 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 48, in project_list
+    return render(request, 'LLM/project_list.html', context)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: LLM/project_list.html
+ERROR 2025-07-20 07:44:52,627 basehttp 11876 16964 "GET / HTTP/1.1" 500 86249
+INFO 2025-07-20 07:51:41,729 autoreload 2704 3692 Watching for file changes with StatReloader
+INFO 2025-07-20 07:51:46,210 basehttp 2704 14180 "GET / HTTP/1.1" 200 216
+INFO 2025-07-20 07:56:06,312 autoreload 8700 2760 Watching for file changes with StatReloader
+INFO 2025-07-20 07:56:12,127 basehttp 8700 10324 "GET / HTTP/1.1" 200 428
+ERROR 2025-07-20 07:56:15,411 log 8700 10324 Internal Server Error: /create/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 74, in create_project
+    return render(request, 'LLM/create_project.html', {'form': form})
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: LLM/create_project.html
+ERROR 2025-07-20 07:56:15,424 basehttp 8700 10324 "GET /create/ HTTP/1.1" 500 86005
+INFO 2025-07-20 08:09:31,244 autoreload 8700 2760 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:09:32,236 autoreload 17048 2828 Watching for file changes with StatReloader
+INFO 2025-07-20 08:11:07,142 autoreload 10324 16856 Watching for file changes with StatReloader
+INFO 2025-07-20 08:14:38,361 autoreload 10324 16856 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:14:39,290 autoreload 13428 6604 Watching for file changes with StatReloader
+INFO 2025-07-20 08:14:49,400 autoreload 13428 6604 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:14:50,440 autoreload 18436 19496 Watching for file changes with StatReloader
+INFO 2025-07-20 08:15:58,071 autoreload 18436 19496 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:15:59,094 autoreload 10204 17188 Watching for file changes with StatReloader
+INFO 2025-07-20 08:21:05,856 autoreload 10204 17188 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:21:07,198 autoreload 16688 14484 Watching for file changes with StatReloader
+INFO 2025-07-20 08:21:29,689 autoreload 16688 14484 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:21:30,749 autoreload 15424 6504 Watching for file changes with StatReloader
+INFO 2025-07-20 08:29:57,318 autoreload 8112 13996 Watching for file changes with StatReloader
+INFO 2025-07-20 08:57:56,493 autoreload 8112 13996 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 08:57:57,502 autoreload 7948 13196 Watching for file changes with StatReloader
+INFO 2025-07-20 08:59:02,855 autoreload 7948 13196 C:\Users\dell\Djangoprojects\Tekflix\LLM\utils\pdf_loader.py changed, reloading.
+INFO 2025-07-20 08:59:03,901 autoreload 3316 15796 Watching for file changes with StatReloader
+INFO 2025-07-20 09:00:36,466 autoreload 20284 18308 Watching for file changes with StatReloader
+INFO 2025-07-20 09:00:45,746 autoreload 20284 18308 C:\Users\dell\Djangoprojects\Tekflix\LLM\utils\pdf_loader.py changed, reloading.
+INFO 2025-07-20 09:00:46,599 autoreload 1836 4872 Watching for file changes with StatReloader
+INFO 2025-07-20 09:04:33,253 autoreload 1836 4872 C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-20 09:04:34,171 autoreload 2664 18616 Watching for file changes with StatReloader
+INFO 2025-07-20 09:04:42,056 basehttp 2664 13208 "GET / HTTP/1.1" 200 428
+ERROR 2025-07-20 09:04:44,639 log 2664 13208 Internal Server Error: /create/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 193, in create_project
+    return render(request, 'LLM/create_project.html', {'form': form})
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: LLM/create_project.html
+ERROR 2025-07-20 09:04:44,643 basehttp 2664 13208 "GET /create/ HTTP/1.1" 500 84998
+INFO 2025-07-20 10:07:31,144 autoreload 12628 15060 Watching for file changes with StatReloader
+INFO 2025-07-20 10:07:36,678 basehttp 12628 16340 "GET / HTTP/1.1" 200 428
+WARNING 2025-07-20 10:07:37,220 log 12628 16340 Not Found: /favicon.ico
+WARNING 2025-07-20 10:07:37,228 basehttp 12628 16340 "GET /favicon.ico HTTP/1.1" 404 4050
+ERROR 2025-07-20 10:07:39,894 log 12628 16340 Internal Server Error: /create/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 193, in create_project
+    return render(request, 'LLM/create_project.html', {'form': form})
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: LLM/create_project.html
+ERROR 2025-07-20 10:07:39,901 basehttp 12628 16340 "GET /create/ HTTP/1.1" 500 84999
+INFO 2025-07-20 10:12:44,884 autoreload 15136 7464 Watching for file changes with StatReloader
+INFO 2025-07-20 10:12:49,143 basehttp 15136 18464 "GET / HTTP/1.1" 200 428
+INFO 2025-07-20 10:12:51,077 basehttp 15136 18464 "GET /create/ HTTP/1.1" 200 1084
+INFO 2025-07-20 10:13:04,806 basehttp 15136 18464 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 10:13:04,825 basehttp 15136 18464 "GET /project/1/ HTTP/1.1" 200 195
+INFO 2025-07-20 10:13:08,813 basehttp 15136 18464 "GET / HTTP/1.1" 200 658
+INFO 2025-07-20 10:13:11,284 basehttp 15136 18464 "GET /create/ HTTP/1.1" 200 1084
+INFO 2025-07-20 10:15:04,123 basehttp 15136 18464 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 10:15:06,276 basehttp 15136 18464 "GET /project/2/ HTTP/1.1" 200 3269667
+INFO 2025-07-20 10:17:00,164 basehttp 15136 18464 "GET /create/ HTTP/1.1" 200 1084
+INFO 2025-07-20 10:17:15,007 basehttp 15136 18464 "GET /?search=shikrapur HTTP/1.1" 200 437
+INFO 2025-07-20 10:17:16,769 basehttp 15136 18464 "GET /create/ HTTP/1.1" 200 1084
+INFO 2025-07-20 10:17:22,732 basehttp 15136 18464 "GET /create/ HTTP/1.1" 200 1084
+INFO 2025-07-20 10:19:03,529 basehttp 15136 18464 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 10:19:05,867 basehttp 15136 18464 "GET /project/3/ HTTP/1.1" 200 3269667
+INFO 2025-07-20 10:22:15,470 basehttp 15136 18464 "GET /create/ HTTP/1.1" 200 1084
+INFO 2025-07-20 10:23:52,107 autoreload 4480 2668 Watching for file changes with StatReloader
+INFO 2025-07-20 10:23:55,958 basehttp 4480 11136 "GET /?search=shikrapur HTTP/1.1" 200 437
+INFO 2025-07-20 10:23:59,251 basehttp 4480 11136 "GET /?search=shikrapur HTTP/1.1" 200 437
+INFO 2025-07-20 10:24:00,509 basehttp 4480 11136 "GET /?search=shikrapur HTTP/1.1" 200 437
+INFO 2025-07-20 10:24:01,364 basehttp 4480 11136 "GET /?search=shikrapur HTTP/1.1" 200 437
+INFO 2025-07-20 10:26:18,595 autoreload 14504 6944 Watching for file changes with StatReloader
+INFO 2025-07-20 10:26:23,111 basehttp 14504 10072 "GET / HTTP/1.1" 200 3450
+INFO 2025-07-20 10:27:06,614 autoreload 19796 10548 Watching for file changes with StatReloader
+INFO 2025-07-20 10:27:11,413 basehttp 19796 18016 "GET / HTTP/1.1" 200 3462
+INFO 2025-07-20 10:27:20,705 basehttp 19796 18016 - Broken pipe from ('127.0.0.1', 54744)
+INFO 2025-07-20 10:27:20,733 basehttp 19796 17304 "GET /create/ HTTP/1.1" 200 3858
+ERROR 2025-07-20 10:27:46,232 log 19796 17304 Internal Server Error: /create/
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 180, in create_project
+    raw_text = extract_text_from_file(uploaded_file)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\services.py", line 139, in extract_text_from_file
+    return extract_text_from_pdf(file_path)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\utils\pdf_loader.py", line 16, in extract_text_from_pdf
+    doc = fitz.open(file_path)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\pymupdf\__init__.py", line 2957, in __init__
+    raise FileNotFoundError(f"no such file: '{filename}'")
+pymupdf.FileNotFoundError: no such file: '22.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf'
+ERROR 2025-07-20 10:27:46,247 basehttp 19796 17304 "POST /create/ HTTP/1.1" 500 85408
+INFO 2025-07-20 10:28:05,924 basehttp 19796 17304 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 10:28:05,945 basehttp 19796 17304 "GET /project/4/ HTTP/1.1" 200 221
+INFO 2025-07-20 10:28:30,870 basehttp 19796 17304 "GET /create/ HTTP/1.1" 200 3858
+INFO 2025-07-20 10:34:06,292 autoreload 19540 18864 Watching for file changes with StatReloader
+INFO 2025-07-20 10:34:10,734 basehttp 19540 8148 "GET / HTTP/1.1" 200 3649
+INFO 2025-07-20 10:34:13,008 basehttp 19540 8148 "GET /create/ HTTP/1.1" 200 3858
+INFO 2025-07-20 10:36:04,181 basehttp 19540 8148 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-20 10:36:07,665 basehttp 19540 8148 "GET /project/5/ HTTP/1.1" 200 6637793

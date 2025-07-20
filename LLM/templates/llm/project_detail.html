@@ -1,0 +1,143 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>{{ project.name }}</title>
+</head>
+<body>
+    <h1>{{ project.name }}</h1>
+    <p>{{ project.description }}</p>
+
+    <h2>Topics</h2>
+    {% for topic in topics %}
+        <div style="margin-bottom: 20px;">
+            <h3>{{ topic.title }}</h3>
+            <p>{{ topic.description }}</p>
+
+            {% for session in topic.sessions.all %}
+                <div style="margin-left: 20px;">
+                    <h4>Session: {{ session.title }}</h4>
+                    <p>{{ session.description }}</p>
+
+                    {% for episode in session.episodes.all %}
+                        <div style="margin-left: 40px;">
+                            <h5>Episode: {{ episode.title }}</h5>
+                            <p>{{ episode.description }}</p>
+                            <p><strong>Duration:</strong> {{ episode.duration_minutes }} minutes</p>
+                            <pre>{{ episode.script }}</pre>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <a href="{% url 'project_list' %}">← Back to Project List</a>
+</body>
+</html> -->
+
+<!-- LLM/templates/LLM/project_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ project.name }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .topic, .session, .episode {
+            margin-bottom: 20px;
+        }
+
+        .session {
+            margin-left: 20px;
+            border-left: 2px solid #007bff;
+            padding-left: 15px;
+        }
+
+        .episode {
+            margin-left: 40px;
+            border-left: 2px dashed #28a745;
+            padding-left: 15px;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>{{ project.name }}</h1>
+        <p>{{ project.description }}</p>
+
+        <h2>Topics</h2>
+
+        {% for topic in topics %}
+            <div class="topic">
+                <h3>{{ topic.title }}</h3>
+                <p>{{ topic.description }}</p>
+
+                {% for session in topic.sessions.all %}
+                    <div class="session">
+                        <h4>Session: {{ session.title }}</h4>
+                        <p>{{ session.description }}</p>
+
+                        {% for episode in session.episodes.all %}
+                            <div class="episode">
+                                <h5>Episode: {{ episode.title }}</h5>
+                                <p>{{ episode.description }}</p>
+                                <p><strong>Duration:</strong> {{ episode.duration_minutes }} minutes</p>
+                                <pre>{{ episode.script }}</pre>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <a href="{% url 'project_list' %}" class="back-link">← Back to Project List</a>
+    </div>
+
+</body>
+</html>
+
