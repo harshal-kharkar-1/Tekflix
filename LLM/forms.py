@@ -4,7 +4,7 @@ from .models import ContentProject
 class ContentProjectForm(forms.ModelForm):
     class Meta:
         model = ContentProject
-        fields = ['name', 'description', 'pdf_file']
+        fields = ['name','pdf_file']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',

@@ -149,6 +149,9 @@ class AutoGraphWorkflow:
         workflow.add_edge(START, "extract_pdf")
         workflow.add_edge("extract_pdf", "generate_topics")
         workflow.add_edge("generate_topics", "process_topic")
+        workflow.add_edge("generate_script", "finalize")
+        workflow.add_edge("finalize", END)
+
         # Add more edges as per your flow
         
         return workflow.compile()

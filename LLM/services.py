@@ -9,8 +9,11 @@ from .langgraph_workflow import AutoGraphWorkflow  # We'll create this
 from .models import Topic, Session, Episode
 # from .utils import chunk_text
 
+from .langgraph_workflow import AutoGraphWorkflow, AutoGraphState
 
 from .utils.pdf_loader import chunk_text
+from typing import List, Dict, Any
+
 
 
 
@@ -137,3 +140,51 @@ from .utils.pdf_loader import extract_text_from_pdf
 
 def extract_text_from_file(file_path):
     return extract_text_from_pdf(file_path)
+
+
+def _finalize_structure(self, state: AutoGraphState) -> AutoGraphState:
+    """Save final structured data into output folder"""
+    output_path = Path(state["output_path"])
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    # 1. Save main tree
+    content_tree_path = output_path / "content_tree.json"
+    with open(content_tree_path, "w", encoding="utf-8") as f:
+        json.dump(state.get("topics", []), f, indent=4)
+
+    # 2. Optional: Save summary output too
+    summary_path = output_path / "structured_output.json"
+    simplified = self._create_summary_structure(state.get("topics", []))
+    with open(summary_path, "w", encoding="utf-8") as f:
+        json.dump(simplified, f, indent=4)
+
+    # 3. Optional: Save plain text version
+    text_path = output_path / "summary.txt"
+    with open(text_path, "w", encoding="utf-8") as f:
+        f.write(self._create_text_summary(state.get("topics", [])))
+
+    return state
+
+def _create_summary_structure(self, topics: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Create a simplified version of the topic/session tree"""
+    summary = {}
+    for topic in topics:
+        topic_title = topic.get("title", "Untitled Topic")
+        summary[topic_title] = {}
+        for session in topic.get("sessions", []):
+            session_title = session.get("title", "Untitled Session")
+            summary[topic_title][session_title] = [
+                episode.get("title", "Untitled Episode")
+                for episode in session.get("episodes", [])
+            ]
+    return summary
+def _create_text_summary(self, topics: List[Dict[str, Any]]) -> str:
+    """Plain text version of the structure for easy viewing"""
+    lines = []
+    for topic in topics:
+        lines.append(f"📘 Topic: {topic.get('title', 'Untitled Topic')}")
+        for session in topic.get("sessions", []):
+            lines.append(f"  🧪 Session: {session.get('title', 'Untitled Session')}")
+            for episode in session.get("episodes", []):
+                lines.append(f"    🎬 Episode: {episode.get('title', 'Untitled Episode')}")
+    return "\n".join(lines)

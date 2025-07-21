@@ -7,7 +7,7 @@ psycopg2-binary
 
 
 # LangChain ecosystem
-langchain-openai
+langchain-groq
 langchain_community 
 langchain-pymupdf4llm
 langchain  
@@ -23,3 +23,13 @@ dj-database-url       # Parse DB URLs into Django DB config
 djangorestframework
 markdown       
 django-filter
+
+
+Django>=4.2.0
+python-dotenv
+PyMuPDF
+langgraph
+langchain
+langchain-openai
+langchain-community
+pydantic
