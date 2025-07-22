@@ -1,0 +1,8 @@
+# Ignore virtual environment folder
+tek_env/
+
+# Ignore environment variable files
+.env
+
+db.sqlite3
+

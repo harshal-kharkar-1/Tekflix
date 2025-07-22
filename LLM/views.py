@@ -404,3 +404,130 @@ def export_project(request, pk):
     response['Content-Disposition'] = f'attachment; filename="project_{project.id}_export.json"'
 
     return response
+
+
+
+########## youtube video transcript ##########
+import os
+import textwrap
+import requests
+import yt_dlp
+import webvtt
+from fpdf import FPDF
+from django.shortcuts import render
+from django.http import HttpResponse, FileResponse
+from django.views.decorators.csrf import csrf_exempt
+
+# Utilities
+def download_captions(youtube_url, lang='en'):
+    ydl_opts = {
+        'writesubtitles': True,
+        'writeautomaticsub': True,
+        'subtitleslangs': [lang],
+        'skip_download': True,
+        'outtmpl': f'captions4.%(ext)s'
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([youtube_url])
+
+def convert_vtt_to_text(lang='en'):
+    vtt_file = f'captions4.{lang}.vtt'
+    srt_lines = []
+    text_content = []
+
+    for i, caption in enumerate(webvtt.read(vtt_file), 1):
+        srt_lines.append(f"{i}")
+        srt_lines.append(f"{caption.start.replace('.', ',')} --> {caption.end.replace('.', ',')}")
+        srt_lines.append(caption.text)
+        srt_lines.append("")
+        text_content.append(caption.text)
+
+    full_text = " ".join(text_content)
+    return full_text
+
+def send_to_groq(text, api_key):
+    url = "https://api.groq.com/openai/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+
+    chunks = textwrap.wrap(text, width=3000, break_long_words=False, break_on_hyphens=False)
+    combined_output = ""
+
+    for i, chunk in enumerate(chunks):
+        payload = {
+            "model": "llama3-8b-8192",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are a transcript formatter. Your job is to ONLY format and structure the provided YouTube transcript text..."
+                },
+                {
+                    "role": "user",
+                    "content": f"Format this transcript:\n\n{chunk}"
+                }
+            ],
+            "temperature": 0.1
+        }
+
+        try:
+            response = requests.post(url, headers=headers, json=payload)
+            response.raise_for_status()
+            result = response.json()
+            content = result["choices"][0]["message"]["content"]
+            combined_output += f"{content}\n\n"
+        except Exception as e:
+            combined_output += f"{chunk}\n\n"
+
+    return combined_output
+
+def convert_to_pdf(text, filename="structured_output.pdf"):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.set_font("Arial", size=12)
+
+    for line in text.split("\n"):
+        try:
+            pdf.multi_cell(0, 10, line.encode('latin-1', 'replace').decode('latin-1'))
+        except:
+            pdf.multi_cell(0, 10, line.encode('ascii', 'ignore').decode('ascii'))
+
+    pdf.output(filename)
+    return filename
+
+# -------------------------------
+# 🎯 Django ViewVfrom django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse, FileResponse, HttpResponse
+import os
+
+@csrf_exempt
+def youtube_to_pdf_view(request):
+    if request.method == "POST":
+        try:
+            import json
+            data = json.loads(request.body.decode("utf-8"))
+            youtube_url = data.get("youtube_url")
+
+            if not youtube_url:
+                return JsonResponse({"error": "YouTube URL is required."}, status=400)
+
+            print(f"🎥 Processing YouTube URL: {youtube_url}")
+            groq_api_key = "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"
+
+            # Run the pipeline
+            download_captions(youtube_url)
+            raw_text = convert_vtt_to_text()
+            formatted_text = send_to_groq(raw_text, groq_api_key)
+            pdf_path = convert_to_pdf(formatted_text)
+
+            # Return PDF file as a downloadable response
+            return FileResponse(open(pdf_path, 'rb'), as_attachment=True, filename='formatted_transcript.pdf')
+
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    return JsonResponse({"message": "Use POST with JSON {'youtube_url': '...'}"}, status=200)
+
+########################################

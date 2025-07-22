@@ -137,3 +137,16 @@ from .utils.pdf_loader import extract_text_from_pdf
 
 def extract_text_from_file(file_path):
     return extract_text_from_pdf(file_path)
+
+
+import tempfile
+
+def extract_text_from_file(uploaded_file):
+    # Create a temporary file to store the uploaded content
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp:
+        for chunk in uploaded_file.chunks():
+            temp.write(chunk)
+        temp_path = temp.name
+
+    # Now extract text using the file path
+    return extract_text_from_pdf(temp_path)

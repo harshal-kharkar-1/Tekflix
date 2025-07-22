@@ -12,7 +12,8 @@ class ContentProject(models.Model):
     """Main project containing all topics and metadata"""
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    pdf_file = models.FileField(upload_to='pdfs/', null=True, blank=True)
+    pdf_file = models.FileField(upload_to='pdfs/', null=True, blank=True, max_length=500)
+
     raw_text = models.TextField(blank=True)
     metadata = models.JSONField(default=dict)
     created_at = models.DateTimeField(auto_now_add=True)

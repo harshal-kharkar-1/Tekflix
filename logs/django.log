@@ -338,3 +338,331 @@ INFO 2025-07-20 15:35:12,966 basehttp 19104 9012 "GET /project/6/ HTTP/1.1" 200 
 INFO 2025-07-20 15:35:45,981 basehttp 19104 9012 "GET /create/ HTTP/1.1" 200 3858
 INFO 2025-07-20 15:37:45,959 basehttp 19104 9012 "POST /create/ HTTP/1.1" 302 0
 INFO 2025-07-20 15:37:56,967 basehttp 19104 9012 "GET /project/7/ HTTP/1.1" 200 1371850
+INFO 2025-07-21 10:44:33,725 autoreload 26388 26924 Watching for file changes with StatReloader
+INFO 2025-07-21 10:45:55,119 autoreload 26880 23544 Watching for file changes with StatReloader
+INFO 2025-07-21 10:46:03,861 basehttp 26880 26484 "GET / HTTP/1.1" 200 4192
+WARNING 2025-07-21 10:46:03,953 log 26880 26484 Not Found: /favicon.ico
+WARNING 2025-07-21 10:46:03,955 basehttp 26880 26484 "GET /favicon.ico HTTP/1.1" 404 4018
+INFO 2025-07-21 10:48:42,337 basehttp 26880 1036 "GET /?search=Check_pdf HTTP/1.1" 200 2735
+INFO 2025-07-21 10:48:44,009 basehttp 26880 1036 "GET /create/ HTTP/1.1" 200 3858
+ERROR 2025-07-21 10:49:11,664 log 26880 1036 Internal Server Error: /create/
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\views.py", line 312, in create_project
+    raw_text = extract_text_from_file(uploaded_file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\services.py", line 139, in extract_text_from_file
+    return extract_text_from_pdf(file_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\utils\pdf_loader.py", line 16, in extract_text_from_pdf
+    doc = fitz.open(file_path)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\pymupdf\__init__.py", line 2957, in __init__
+    raise FileNotFoundError(f"no such file: '{filename}'")
+pymupdf.FileNotFoundError: no such file: '22.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf'
+ERROR 2025-07-21 10:49:11,698 basehttp 26880 1036 "POST /create/ HTTP/1.1" 500 86812
+INFO 2025-07-21 10:54:06,125 autoreload 26880 23544 C:\Users\Anuradha\Tekflix\LLM\services.py changed, reloading.
+INFO 2025-07-21 10:54:07,091 autoreload 9484 3328 Watching for file changes with StatReloader
+INFO 2025-07-21 10:54:14,000 basehttp 9484 21496 "GET / HTTP/1.1" 200 4192
+INFO 2025-07-21 10:54:24,502 basehttp 9484 21496 "GET /create/ HTTP/1.1" 200 3858
+INFO 2025-07-21 10:54:41,925 basehttp 9484 21496 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-21 10:54:41,997 basehttp 9484 21496 "GET /project/8/ HTTP/1.1" 200 7098
+INFO 2025-07-21 11:13:14,964 autoreload 7860 12704 Watching for file changes with StatReloader
+INFO 2025-07-21 11:13:22,183 basehttp 7860 15400 "GET / HTTP/1.1" 200 4378
+INFO 2025-07-21 11:13:24,760 basehttp 7860 15400 "GET /project/8/ HTTP/1.1" 200 7098
+INFO 2025-07-21 11:13:42,164 basehttp 7860 15400 "GET /create/ HTTP/1.1" 200 3858
+ERROR 2025-07-21 11:15:17,947 log 7860 15400 Storage can not find an available filename for "pdfs\22_ds7WBDL.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf". Please make sure that the corresponding file field allows sufficient "max_length".
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\views.py", line 315, in create_project
+    project.save()
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1881, in execute_sql
+    for sql, params in self.as_sql():
+                       ^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1806, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1750, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\files\storage\base.py", line 107, in get_available_name
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: Storage can not find an available filename for "pdfs\22_ds7WBDL.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf". Please make sure that the corresponding file field allows sufficient "max_length".
+WARNING 2025-07-21 11:15:17,997 basehttp 7860 15400 "POST /create/ HTTP/1.1" 400 148277
+INFO 2025-07-21 11:26:29,212 autoreload 16416 22836 Watching for file changes with StatReloader
+INFO 2025-07-21 11:26:36,815 basehttp 16416 3980 "GET / HTTP/1.1" 200 4378
+INFO 2025-07-21 11:26:42,513 basehttp 16416 12976 "GET /create/ HTTP/1.1" 200 3858
+ERROR 2025-07-21 11:27:01,889 log 16416 20600 Storage can not find an available filename for "pdfs\22_5NnrAfl.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf". Please make sure that the corresponding file field allows sufficient "max_length".
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\views.py", line 315, in create_project
+    project.save()
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1881, in execute_sql
+    for sql, params in self.as_sql():
+                       ^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1806, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1750, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\files\storage\base.py", line 107, in get_available_name
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: Storage can not find an available filename for "pdfs\22_5NnrAfl.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf". Please make sure that the corresponding file field allows sufficient "max_length".
+WARNING 2025-07-21 11:27:01,936 basehttp 16416 20600 "POST /create/ HTTP/1.1" 400 148277
+INFO 2025-07-21 11:29:22,098 autoreload 16416 22836 C:\Users\Anuradha\Tekflix\LLM\models.py changed, reloading.
+INFO 2025-07-21 11:29:23,116 autoreload 2760 2768 Watching for file changes with StatReloader
+INFO 2025-07-21 11:29:29,088 basehttp 2760 11856 "GET / HTTP/1.1" 200 4378
+INFO 2025-07-21 11:29:31,423 basehttp 2760 11856 "GET /project/8/ HTTP/1.1" 200 7098
+INFO 2025-07-21 11:29:37,983 basehttp 2760 11856 "GET /create/ HTTP/1.1" 200 3858
+ERROR 2025-07-21 11:29:55,483 log 2760 11856 Storage can not find an available filename for "pdfs\22_yytZ1OE.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf". Please make sure that the corresponding file field allows sufficient "max_length".
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\views.py", line 315, in create_project
+    project.save()
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1881, in execute_sql
+    for sql, params in self.as_sql():
+                       ^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1806, in as_sql
+    self.prepare_value(field, self.pre_save_val(field, obj))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1750, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\fields\files.py", line 338, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\db\models\fields\files.py", line 99, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\files\storage\base.py", line 44, in save
+    name = self.get_available_name(name, max_length=max_length)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\files\storage\base.py", line 107, in get_available_name
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: Storage can not find an available filename for "pdfs\22_yytZ1OE.-Textbook-of-Medical-Oncology-Fourth-Edition-Cavalli-Textbook-of-Medical-Oncology-PDFDrive-.pdf". Please make sure that the corresponding file field allows sufficient "max_length".
+WARNING 2025-07-21 11:29:55,522 basehttp 2760 11856 "POST /create/ HTTP/1.1" 400 148277
+INFO 2025-07-21 11:31:44,033 autoreload 2760 2768 C:\Users\Anuradha\Tekflix\LLM\models.py changed, reloading.
+INFO 2025-07-21 11:31:44,966 autoreload 8060 23732 Watching for file changes with StatReloader
+INFO 2025-07-21 11:32:34,021 autoreload 8060 23732 C:\Users\Anuradha\Tekflix\LLM\models.py changed, reloading.
+INFO 2025-07-21 11:32:34,821 autoreload 9292 21572 Watching for file changes with StatReloader
+INFO 2025-07-21 11:32:39,835 basehttp 9292 23828 "GET / HTTP/1.1" 200 4378
+INFO 2025-07-21 11:32:44,154 basehttp 9292 23828 "GET /create/ HTTP/1.1" 200 3858
+INFO 2025-07-21 11:33:29,698 basehttp 9292 23828 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-21 11:33:32,876 basehttp 9292 23828 "GET /project/9/ HTTP/1.1" 200 1371850
+INFO 2025-07-21 13:40:58,053 autoreload 9292 21572 C:\Users\Anuradha\Tekflix\LLM\forms.py changed, reloading.
+INFO 2025-07-21 13:40:59,154 autoreload 21016 20736 Watching for file changes with StatReloader
+INFO 2025-07-21 13:41:08,721 basehttp 21016 26816 "GET /create/ HTTP/1.1" 200 3384
+INFO 2025-07-21 13:41:16,806 autoreload 21016 20736 C:\Users\Anuradha\Tekflix\LLM\forms.py changed, reloading.
+INFO 2025-07-21 13:41:18,149 autoreload 17256 25320 Watching for file changes with StatReloader
+INFO 2025-07-21 14:22:01,212 basehttp 17256 23340 "GET / HTTP/1.1" 200 4564
+INFO 2025-07-21 14:22:11,995 basehttp 17256 23340 - Broken pipe from ('127.0.0.1', 58520)
+INFO 2025-07-21 14:22:15,362 basehttp 17256 960 "GET /project/9/ HTTP/1.1" 200 1371850
+INFO 2025-07-21 14:55:48,853 basehttp 17256 7428 "GET /create/ HTTP/1.1" 200 3384
+INFO 2025-07-21 14:56:00,487 basehttp 17256 7428 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-21 14:56:00,579 basehttp 17256 7428 "GET /project/10/ HTTP/1.1" 200 7098
+INFO 2025-07-21 15:02:24,350 basehttp 17256 1916 "GET / HTTP/1.1" 200 4751
+INFO 2025-07-21 15:02:37,729 basehttp 17256 6728 "GET /project/10/ HTTP/1.1" 200 7098
+INFO 2025-07-21 15:02:56,323 basehttp 17256 9884 "GET /create/ HTTP/1.1" 200 3384
+INFO 2025-07-21 15:03:09,315 basehttp 17256 15344 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-21 15:03:09,396 basehttp 17256 15344 "GET /project/11/ HTTP/1.1" 200 7098
+INFO 2025-07-21 18:58:31,110 autoreload 21608 10668 Watching for file changes with StatReloader
+INFO 2025-07-21 18:59:34,170 autoreload 26972 27056 Watching for file changes with StatReloader
+INFO 2025-07-21 19:00:12,503 autoreload 23368 15180 Watching for file changes with StatReloader
+INFO 2025-07-21 19:00:45,887 autoreload 9928 17852 Watching for file changes with StatReloader
+INFO 2025-07-21 19:03:43,649 autoreload 9928 17852 C:\Users\Anuradha\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-21 19:03:44,621 autoreload 1920 21196 Watching for file changes with StatReloader
+INFO 2025-07-21 19:04:01,079 autoreload 1920 21196 C:\Users\Anuradha\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-21 19:04:02,032 autoreload 17456 9536 Watching for file changes with StatReloader
+INFO 2025-07-21 19:04:09,236 basehttp 17456 4984 "GET / HTTP/1.1" 200 4815
+WARNING 2025-07-21 19:04:09,359 log 17456 4984 Not Found: /favicon.ico
+WARNING 2025-07-21 19:04:09,359 basehttp 17456 4984 "GET /favicon.ico HTTP/1.1" 404 4289
+INFO 2025-07-21 19:04:12,507 basehttp 17456 10108 "GET /create/ HTTP/1.1" 200 3384
+INFO 2025-07-21 19:05:11,033 basehttp 17456 23300 "POST /create/ HTTP/1.1" 302 0
+INFO 2025-07-21 19:05:14,488 basehttp 17456 23300 "GET /project/12/ HTTP/1.1" 200 1371850
+INFO 2025-07-21 19:13:43,807 autoreload 17456 9536 C:\Users\Anuradha\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-21 19:13:44,878 autoreload 17172 340 Watching for file changes with StatReloader
+INFO 2025-07-21 19:14:18,949 basehttp 17172 4184 "GET / HTTP/1.1" 200 4813
+INFO 2025-07-21 19:14:26,434 basehttp 17172 11220 "GET /?search=https%3A%2F%2Fyoutu.be%2FT-D1OfcDW1M%3Fsi%3DOwFrpr5V6WaL0Rmb HTTP/1.1" 200 2774
+INFO 2025-07-21 19:14:29,290 basehttp 17172 11220 "GET /create/ HTTP/1.1" 200 3384
+INFO 2025-07-21 19:15:22,906 basehttp 17172 17300 "GET /youtube-to-pdf HTTP/1.1" 301 0
+ERROR 2025-07-21 19:15:23,002 log 17172 1820 Internal Server Error: /youtube-to-pdf/
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\views.py", line 519, in youtube_to_pdf_view
+    return render(request, "youtube_to_pdf_form.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: youtube_to_pdf_form.html
+ERROR 2025-07-21 19:15:23,015 basehttp 17172 1820 "GET /youtube-to-pdf/ HTTP/1.1" 500 90680
+WARNING 2025-07-21 19:15:56,106 log 17172 7440 Not Found: /LLM/youtube-to-pdf/
+WARNING 2025-07-21 19:15:56,106 basehttp 17172 7440 "GET /LLM/youtube-to-pdf/ HTTP/1.1" 404 4313
+WARNING 2025-07-21 19:16:59,059 log 17172 16292 Not Found: /LLM/youtube-to-pdf/
+WARNING 2025-07-21 19:16:59,067 basehttp 17172 16292 "POST /LLM/youtube-to-pdf/ HTTP/1.1" 404 4314
+INFO 2025-07-21 19:21:52,974 autoreload 17172 340 C:\Users\Anuradha\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-21 19:21:54,989 autoreload 6228 7964 Watching for file changes with StatReloader
+WARNING 2025-07-21 19:22:01,369 log 6228 24076 Not Found: /LLM/youtube-to-pdf/
+WARNING 2025-07-21 19:22:01,369 basehttp 6228 24076 "POST /LLM/youtube-to-pdf/ HTTP/1.1" 404 4314
+WARNING 2025-07-21 19:22:35,003 log 6228 16272 Not Found: /LLM/youtube-to-pdf/
+WARNING 2025-07-21 19:22:35,003 basehttp 6228 16272 "POST /LLM/youtube-to-pdf/ HTTP/1.1" 404 4314
+INFO 2025-07-21 19:22:48,175 autoreload 6228 7964 C:\Users\Anuradha\Tekflix\LLM\urls.py changed, reloading.
+INFO 2025-07-21 19:22:49,082 autoreload 14716 20564 Watching for file changes with StatReloader
+WARNING 2025-07-21 19:24:04,988 log 14716 17044 Not Found: /LLM/youtube-to-pdf/
+WARNING 2025-07-21 19:24:04,988 basehttp 14716 17044 "POST /LLM/youtube-to-pdf/ HTTP/1.1" 404 4314
+WARNING 2025-07-21 19:25:20,915 log 14716 6240 Bad Request: /youtube-to-pdf/
+WARNING 2025-07-21 19:25:20,917 basehttp 14716 6240 "POST /youtube-to-pdf/ HTTP/1.1" 400 28
+ERROR 2025-07-21 19:26:19,177 log 14716 6240 Internal Server Error: /youtube-to-pdf
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\utils\deprecation.py", line 122, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\middleware\common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\middleware\common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/youtube-to-pdf/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+ERROR 2025-07-21 19:26:19,185 basehttp 14716 6240 "POST /youtube-to-pdf HTTP/1.1" 500 75539
+WARNING 2025-07-21 19:26:24,156 log 14716 3516 Bad Request: /youtube-to-pdf/
+WARNING 2025-07-21 19:26:24,163 basehttp 14716 3516 "POST /youtube-to-pdf/ HTTP/1.1" 400 28
+WARNING 2025-07-21 19:27:17,480 log 14716 3516 Bad Request: /youtube-to-pdf/
+WARNING 2025-07-21 19:27:17,480 basehttp 14716 3516 "POST /youtube-to-pdf/ HTTP/1.1" 400 28
+INFO 2025-07-21 19:29:11,270 autoreload 14716 20564 C:\Users\Anuradha\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-21 19:29:12,330 autoreload 14072 3712 Watching for file changes with StatReloader
+WARNING 2025-07-21 19:29:20,624 log 14072 15796 Bad Request: /youtube-to-pdf/
+WARNING 2025-07-21 19:29:20,624 basehttp 14072 15796 "POST /youtube-to-pdf/ HTTP/1.1" 400 28
+ERROR 2025-07-21 19:29:55,461 log 14072 20992 Internal Server Error: /youtube-to-pdf/
+Traceback (most recent call last):
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\Tekflix\LLM\views.py", line 524, in youtube_to_pdf_view
+    return render(request, "youtube_to_pdf_form.html")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Anuradha\anaconda3\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: youtube_to_pdf_form.html
+ERROR 2025-07-21 19:29:55,473 basehttp 14072 20992 "GET /youtube-to-pdf/ HTTP/1.1" 500 90735
+WARNING 2025-07-21 19:29:55,727 log 14072 20992 Not Found: /favicon.ico
+WARNING 2025-07-21 19:29:55,731 basehttp 14072 20992 "GET /favicon.ico HTTP/1.1" 404 4289
+INFO 2025-07-21 19:31:55,045 autoreload 14072 3712 C:\Users\Anuradha\Tekflix\LLM\views.py changed, reloading.
+INFO 2025-07-21 19:31:56,227 autoreload 17536 18404 Watching for file changes with StatReloader
+ERROR 2025-07-21 19:32:04,118 log 17536 24964 Internal Server Error: /youtube-to-pdf/
+ERROR 2025-07-21 19:32:04,118 basehttp 17536 24964 "POST /youtube-to-pdf/ HTTP/1.1" 500 167
+INFO 2025-07-21 19:33:01,198 basehttp 17536 24964 "POST /youtube-to-pdf/ HTTP/1.1" 200 5519
