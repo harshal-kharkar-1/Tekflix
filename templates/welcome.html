@@ -1,0 +1,90 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Tekflix</title>
+</head>
+<body>
+    <h1>Welcome to Tekflix</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf" required><br><br>
+        <button type="submit">Upload PDF</button>
+    </form>
+
+    <h3>📄 Output:</h3>
+    <pre id="output" style="margin-top: 20px; white-space: pre-wrap; background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;"></pre>
+
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch("/llm/upload-pdf-new/", {  // ✅ Trailing slash is required
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Server error (${response.status}): ${errorText}`);
+                }
+
+                const result = await response.json();
+                document.getElementById("output").textContent = JSON.stringify(result, null, 2);
+            } catch (err) {
+                document.getElementById("output").textContent = "❌ Error: " + err.message;
+                console.error("Upload failed:", err);
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Tekflix</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">  <!-- ✅ Favicon line -->
+</head>
+<body>
+    <h1>Welcome to Tekflix</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf" required><br><br>
+        <button type="submit">Upload PDF</button>
+    </form>
+
+    <h3>📄 Output:</h3>
+    <pre id="output" style="margin-top: 20px; white-space: pre-wrap; background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;"></pre>
+
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch("/llm/upload-pdf-new/", {  // ✅ Trailing slash is required
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Server error (${response.status}): ${errorText}`);
+                }
+
+                const result = await response.json();
+                document.getElementById("output").textContent = JSON.stringify(result, null, 2);
+            } catch (err) {
+                document.getElementById("output").textContent = "❌ Error: " + err.message;
+                console.error("Upload failed:", err);
+            }
+        });
+    </script>
+</body>
+</html>

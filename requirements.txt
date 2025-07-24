@@ -13,6 +13,7 @@ langchain-pymupdf4llm
 langchain  
 langgraph
 langsmith
+pydantic
 
 
 # Optional extras (you may want these)
@@ -23,3 +24,12 @@ dj-database-url       # Parse DB URLs into Django DB config
 djangorestframework
 markdown       
 django-filter
+
+
+
+langchain-groq
+
+
+# Optional (if needed by langchain PDF loader)
+PyMuPDF  # required by PyPDFLoader internally
+pypdf

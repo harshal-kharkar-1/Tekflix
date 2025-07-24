@@ -1,0 +1,5 @@
+.env
+db.sqlite3
+/tek_env/
+/media/
+medical_book.pdf

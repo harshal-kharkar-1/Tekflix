@@ -1,0 +1,179 @@
+ERROR 2025-07-22 23:05:23,991 langgraph_workflow 18024 12676 Workflow execution failed: Failed to extract text from PDF: bad filename: type(filename)=<class 'dict'> filename={'pdf_path': 'C:\\Users\\dell\\Djangoprojects\\Tekflix\\media\\pdfs\\medical_book_vRgAy0R.pdf', 'output_path': 'output_54.json', 'messages': [], 'topics': []}.
+ERROR 2025-07-22 23:12:33,366 langgraph_workflow 7764 18672 Workflow execution failed: 'dict' object has no attribute 'page_chunks'
+ERROR 2025-07-22 23:35:50,631 langgraph_workflow 23516 11044 Workflow execution failed: 'page_chunks'
+ERROR 2025-07-22 23:38:19,222 langgraph_workflow 14316 10440 Workflow execution failed: Failed to extract text from PDF: string indices must be integers
+ERROR 2025-07-22 23:44:29,342 langgraph_workflow 1688 14092 Workflow execution failed: Failed to extract text from PDF: string indices must be integers
+ERROR 2025-07-22 23:47:36,960 langgraph_workflow 7960 17344 Workflow execution failed: 'PDFExtractorAgent' object has no attribute 'extract'
+ERROR 2025-07-23 09:30:45,152 langgraph_workflow 5412 18732 Workflow execution failed: Failed to extract text from PDF: 'str' object has no attribute 'get'
+ERROR 2025-07-24 17:03:53,680 views 6784 16688 Error processing PDF:
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\pydantic.py", line 28, in _parse_obj
+    return self.pydantic_object.model_validate(obj)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\pydantic\main.py", line 705, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for HierarchicalResponse
+topics.2.sessions.0.episodes
+  Field required [type=missing, input_value={'title': 'Introduction t...ls in cancer treatment'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+topics.2.sessions.1.episodes
+  Field required [type=missing, input_value={'title': 'Design and Con...uct of clinical trials'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 211, in upload_pdf_view
+    result = extract_hierarchical_topics(text)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 148, in extract_hierarchical_topics
+    result = workflow.compile().invoke({"text": text})
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\__init__.py", line 2844, in invoke
+    for chunk in self.stream(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\__init__.py", line 2534, in stream
+    for _ in runner.tick(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\runner.py", line 162, in tick
+    run_with_retry(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\utils\runnable.py", line 623, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\utils\runnable.py", line 377, in invoke
+    ret = self.func(*args, **kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 142, in analyze_document_node
+    return {"text": state["text"], "result": parser.parse(response.content)}
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\pydantic.py", line 77, in parse
+    return super().parse(text)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\json.py", line 96, in parse
+    return self.parse_result([Generation(text=text)])
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\pydantic.py", line 62, in parse_result
+    return self._parse_obj(json_object)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\pydantic.py", line 35, in _parse_obj
+    raise self._parser_exception(e, obj) from e
+langchain_core.exceptions.OutputParserException: Failed to parse HierarchicalResponse from completion {"topics": [{"title": "General Principles", "description": "Introduction to medical oncology", "sessions": [{"title": "Molecular Biology of Cancer", "description": "Understanding the biology of cancer", "episodes": [{"title": "Introduction to Molecular Biology of Cancer", "description": "Overview of the molecular biology of cancer"}, {"title": "Molecular Mechanisms of Cancer", "description": "In-depth look at the molecular mechanisms of cancer"}]}, {"title": "Principles of Systemic Therapy", "description": "Understanding systemic therapy in cancer treatment", "episodes": [{"title": "Introduction to Systemic Therapy", "description": "Overview of systemic therapy in cancer treatment"}, {"title": "Principles of Systemic Therapy", "description": "In-depth look at the principles of systemic therapy"}]}, {"title": "Principles and Examples of Cancer (Cell) Specific Therapies", "description": "Understanding cancer cell-specific therapies", "episodes": [{"title": "Introduction to Cancer Cell-Specific Therapies", "description": "Overview of cancer cell-specific therapies"}, {"title": "Examples of Cancer Cell-Specific Therapies", "description": "In-depth look at examples of cancer cell-specific therapies"}]}]}, {"title": "Cancer Types", "description": "In-depth look at various types of cancer", "sessions": [{"title": "Breast Cancer", "description": "Understanding breast cancer", "episodes": [{"title": "Introduction to Breast Cancer", "description": "Overview of breast cancer"}, {"title": "Diagnosis and Treatment of Breast Cancer", "description": "In-depth look at diagnosis and treatment of breast cancer"}]}, {"title": "Gynecologic Cancer", "description": "Understanding gynecologic cancer", "episodes": [{"title": "Introduction to Gynecologic Cancer", "description": "Overview of gynecologic cancer"}, {"title": "Diagnosis and Treatment of Gynecologic Cancer", "description": "In-depth look at diagnosis and treatment of gynecologic cancer"}]}, {"title": "Head and Neck Cancer", "description": "Understanding head and neck cancer", "episodes": [{"title": "Introduction to Head and Neck Cancer", "description": "Overview of head and neck cancer"}, {"title": "Diagnosis and Treatment of Head and Neck Cancer", "description": "In-depth look at diagnosis and treatment of head and neck cancer"}]}]}, {"title": "Clinical Trials", "description": "Understanding clinical trials in cancer treatment", "sessions": [{"title": "Introduction to Clinical Trials", "description": "Overview of clinical trials in cancer treatment"}, {"title": "Design and Conduct of Clinical Trials", "description": "In-depth look at the design and conduct of clinical trials"}]}], "document_summary": "The Textbook of Medical Oncology, 4th edition, is a comprehensive guide to medical oncology, covering general principles, cancer types, and clinical trials. The book is written by a team of international experts and is a key source of reference for all working in the field of oncology."}. Got: 2 validation errors for HierarchicalResponse
+topics.2.sessions.0.episodes
+  Field required [type=missing, input_value={'title': 'Introduction t...ls in cancer treatment'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+topics.2.sessions.1.episodes
+  Field required [type=missing, input_value={'title': 'Design and Con...uct of clinical trials'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
+ERROR 2025-07-24 17:20:14,995 views 6784 21152 Error processing PDF:
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\json.py", line 82, in parse_result
+    return parse_json_markdown(text)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\utils\json.py", line 150, in parse_json_markdown
+    return _parse_json(json_str, parser=parser)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\utils\json.py", line 166, in _parse_json
+    return parser(json_str)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\utils\json.py", line 123, in parse_partial_json
+    return json.loads(s, strict=strict)
+  File "C:\Users\dell\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+  File "C:\Users\dell\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\dell\AppData\Local\Programs\Python\Python310\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 41 column 13 (char 1455)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 211, in upload_pdf_view
+    result = extract_hierarchical_topics(text)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 148, in extract_hierarchical_topics
+    result = workflow.compile().invoke({"text": text})
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\__init__.py", line 2844, in invoke
+    for chunk in self.stream(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\__init__.py", line 2534, in stream
+    for _ in runner.tick(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\runner.py", line 162, in tick
+    run_with_retry(
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\pregel\retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\utils\runnable.py", line 623, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langgraph\utils\runnable.py", line 377, in invoke
+    ret = self.func(*args, **kwargs)
+  File "C:\Users\dell\Djangoprojects\Tekflix\LLM\views.py", line 142, in analyze_document_node
+    return {"text": state["text"], "result": parser.parse(response.content)}
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\pydantic.py", line 77, in parse
+    return super().parse(text)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\json.py", line 96, in parse
+    return self.parse_result([Generation(text=text)])
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\pydantic.py", line 61, in parse_result
+    json_object = super().parse_result(result)
+  File "C:\Users\dell\Djangoprojects\Tekflix\tek_env\lib\site-packages\langchain_core\output_parsers\json.py", line 85, in parse_result
+    raise OutputParserException(msg, llm_output=text) from e
+langchain_core.exceptions.OutputParserException: Invalid json output: Here is the output in JSON format:
+
+```
+{
+  "topics": [
+    {
+      "title": "Medical Oncology",
+      "description": "A comprehensive textbook on medical oncology",
+      "sessions": [
+        {
+          "title": "General Principles",
+          "description": "Introduction to medical oncology",
+          "episodes": [
+            {
+              "title": "Molecular Biology of Cancer",
+              "description": "Understanding the biology of cancer"
+            },
+            {
+              "title": "Principles of Systemic Therapy",
+              "description": "Overview of systemic therapy in cancer treatment"
+            },
+            {
+              "title": "Principles and Examples of Cancer (Cell) Specific Therapies",
+              "description": "Cancer-specific therapies and their applications"
+            }
+          ]
+        },
+        {
+          "title": "Cancer Types",
+          "description": "Different types of cancer and their treatment options",
+          "episodes": [
+            {
+              "title": "Breast Cancer",
+              "description": "Breast cancer diagnosis, treatment, and management"
+            },
+            {
+              "title": "Gynecologic Cancer",
+              "description": "Gynecologic cancer diagnosis, treatment, and management"
+            },
+            {
+              "title": "Head and Neck Cancer",
+              "description": "Head and neck cancer diagnosis, treatment, and management"
+            },
+            ...
+          ]
+        },
+        {
+          "title": "Clinical Trials",
+          "description": "Design, conduct, and interpretation of clinical trials",
+          "episodes": [
+            {
+              "title": "Principles of Clinical Trials",
+              "description": "Introduction to clinical trials and their importance"
+            },
+            {
+              "title": "Design and Conduct of Clinical Trials",
+              "description": "Design and conduct of clinical trials in medical oncology"
+            },
+            {
+              "title": "Interpretation of Clinical Trial Results",
+              "description": "Interpretation of clinical trial results and their implications"
+            }
+          ]
+        },
+        ...
+      ]
+    }
+  ],
+  "document_summary": "The Textbook of Medical Oncology, 4th edition, is a comprehensive guide to medical oncology, covering general principles, cancer types, clinical trials, and more."
+}
+```
+
+Note that the output is a hierarchical structure with topics, sessions, and episodes. Each topic has a title and description, and is composed of one or more sessions. Each session has a title and description, and is composed of one or more episodes. Each episode has a title and description. The document summary provides a brief overview of the textbook.
+For troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE 
